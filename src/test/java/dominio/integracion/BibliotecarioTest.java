@@ -18,6 +18,7 @@ import testdatabuilder.LibroTestDataBuilder;
 public class BibliotecarioTest {
 
 	private static final String CRONICA_DE_UNA_MUERTA_ANUNCIADA = "Cronica de una muerta anunciada";
+	private static final String NOMBRE_DEL_USUARIO = "diegozabalab";
 	
 	private SistemaDePersistencia sistemaPersistencia;
 	
@@ -50,7 +51,7 @@ public class BibliotecarioTest {
 		Bibliotecario blibliotecario = new Bibliotecario(repositorioLibros, repositorioPrestamo);
 
 		// act
-		blibliotecario.prestar(libro.getIsbn());
+		blibliotecario.prestar(libro.getIsbn(), NOMBRE_DEL_USUARIO);
 
 		// assert
 		Assert.assertTrue(blibliotecario.esPrestado(libro.getIsbn()));
@@ -69,10 +70,10 @@ public class BibliotecarioTest {
 		Bibliotecario blibliotecario = new Bibliotecario(repositorioLibros, repositorioPrestamo);
 
 		// act
-		blibliotecario.prestar(libro.getIsbn());
+		blibliotecario.prestar(libro.getIsbn(),NOMBRE_DEL_USUARIO);
 		try {
 			
-			blibliotecario.prestar(libro.getIsbn());
+			blibliotecario.prestar(libro.getIsbn(),NOMBRE_DEL_USUARIO);
 			fail();
 			
 		} catch (PrestamoException e) {

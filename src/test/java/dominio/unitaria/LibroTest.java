@@ -1,6 +1,7 @@
 package dominio.unitaria;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -15,12 +16,10 @@ public class LibroTest {
 
 	@Test
 	public void crearLibroTest() {
-		
+
 		// arrange
-		LibroTestDataBuilder libroTestDataBuilder = new LibroTestDataBuilder().
-				conTitulo(NOMBRE_LIBRO).
-				conIsbn(ISBN).
-				conAnio(ANIO);
+		LibroTestDataBuilder libroTestDataBuilder = new LibroTestDataBuilder().conTitulo(NOMBRE_LIBRO).conIsbn(ISBN)
+				.conAnio(ANIO);
 
 		// act
 		Libro libro = libroTestDataBuilder.build();
@@ -29,6 +28,19 @@ public class LibroTest {
 		assertEquals(NOMBRE_LIBRO, libro.getTitulo());
 		assertEquals(ISBN, libro.getIsbn());
 		assertEquals(ANIO, libro.getAnio());
+	}
+
+	/*
+	 * Prueba para verificar si es ISBN de un libro es palindromo o capicua
+	 * La prueba se ejecuta correctamente si el ISBN es palindromo
+	 */
+	@Test
+	public void esIsbnPalindromo() {
+
+		StringBuilder isbnInvertido = new StringBuilder(ISBN);
+		isbnInvertido = isbnInvertido.reverse();
+		
+		assertTrue(ISBN.equalsIgnoreCase(isbnInvertido.toString()));
 	}
 
 }
