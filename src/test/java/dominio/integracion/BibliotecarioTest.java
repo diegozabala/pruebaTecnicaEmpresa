@@ -19,23 +19,22 @@ public class BibliotecarioTest {
 
 	private static final String CRONICA_DE_UNA_MUERTA_ANUNCIADA = "Cronica de una muerta anunciada";
 	private static final String NOMBRE_DEL_USUARIO = "diegozabalab";
-	
+
 	private SistemaDePersistencia sistemaPersistencia;
-	
+
 	private RepositorioLibro repositorioLibros;
 	private RepositorioPrestamo repositorioPrestamo;
 
 	@Before
 	public void setUp() {
-		
+
 		sistemaPersistencia = new SistemaDePersistencia();
-		
+
 		repositorioLibros = sistemaPersistencia.obtenerRepositorioLibros();
 		repositorioPrestamo = sistemaPersistencia.obtenerRepositorioPrestamos();
-		
+
 		sistemaPersistencia.iniciar();
 	}
-	
 
 	@After
 	public void tearDown() {
@@ -58,24 +57,23 @@ public class BibliotecarioTest {
 		Assert.assertNotNull(repositorioPrestamo.obtenerLibroPrestadoPorIsbn(libro.getIsbn()));
 
 	}
+	
 
 	@Test
 	public void prestarLibroNoDisponibleTest() {
 
 		// arrange
 		Libro libro = new LibroTestDataBuilder().conTitulo(CRONICA_DE_UNA_MUERTA_ANUNCIADA).build();
-		
 		repositorioLibros.agregar(libro);
-		
 		Bibliotecario blibliotecario = new Bibliotecario(repositorioLibros, repositorioPrestamo);
 
 		// act
-		blibliotecario.prestar(libro.getIsbn(),NOMBRE_DEL_USUARIO);
+		blibliotecario.prestar(libro.getIsbn(), NOMBRE_DEL_USUARIO);
 		try {
-			
-			blibliotecario.prestar(libro.getIsbn(),NOMBRE_DEL_USUARIO);
+
+			blibliotecario.prestar(libro.getIsbn(), NOMBRE_DEL_USUARIO);
 			fail();
-			
+
 		} catch (PrestamoException e) {
 			// assert
 			Assert.assertEquals(Bibliotecario.EL_LIBRO_NO_SE_ENCUENTRA_DISPONIBLE, e.getMessage());

@@ -30,17 +30,4 @@ public class LibroTest {
 		assertEquals(ANIO, libro.getAnio());
 	}
 
-	/*
-	 * Prueba para verificar si es ISBN de un libro es palindromo o capicua
-	 * La prueba se ejecuta correctamente si el ISBN es palindromo
-	 */
-	@Test
-	public void esIsbnPalindromo() {
-
-		StringBuilder isbnInvertido = new StringBuilder(ISBN);
-		isbnInvertido = isbnInvertido.reverse();
-		
-		assertTrue(ISBN.equalsIgnoreCase(isbnInvertido.toString()));
-	}
-
 }
