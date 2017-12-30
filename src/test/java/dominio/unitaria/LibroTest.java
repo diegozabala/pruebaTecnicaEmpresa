@@ -1,6 +1,7 @@
 package dominio.unitaria;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -15,12 +16,10 @@ public class LibroTest {
 
 	@Test
 	public void crearLibroTest() {
-		
+
 		// arrange
-		LibroTestDataBuilder libroTestDataBuilder = new LibroTestDataBuilder().
-				conTitulo(NOMBRE_LIBRO).
-				conIsbn(ISBN).
-				conAnio(ANIO);
+		LibroTestDataBuilder libroTestDataBuilder = new LibroTestDataBuilder().conTitulo(NOMBRE_LIBRO).conIsbn(ISBN)
+				.conAnio(ANIO);
 
 		// act
 		Libro libro = libroTestDataBuilder.build();

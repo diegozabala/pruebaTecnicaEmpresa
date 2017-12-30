@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 /dominio/
 /testdatabuilder/
 /persistencia/
+=======
+/persistencia/
+/dominio/
+/testdatabuilder/
+>>>>>>> ramaPruebasUnitarias

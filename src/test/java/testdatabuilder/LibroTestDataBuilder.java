@@ -2,6 +2,7 @@ package testdatabuilder;
 
 import dominio.Libro;
 
+//Clase para ejecutar pruebas unitarias concernientes a un libro.
 public class LibroTestDataBuilder {
 
 	private static final int ANIO = 2010;
